@@ -6,5 +6,6 @@ pathlib
 mysql-connector-python
 google-cloud-storage
 gspread
+flask
 oauth2client
 xmltodict

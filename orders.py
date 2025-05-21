@@ -2,7 +2,7 @@ import mysql.connector
 from time import sleep
 import pandas as pd
 import csv
-from sh import Sh
+from sh_glcloud import Sh
 import io
 from datetime import datetime
 import sib_api_v3_sdk

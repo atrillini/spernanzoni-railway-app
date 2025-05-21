@@ -8,6 +8,8 @@ import mysql.connector
 from sh_glcloud import Sh
 import base64
 from datetime import datetime
+from flask import Flask, request
+import subprocess
 
 BASE_COLUMN_SIZE = 4
 
@@ -263,10 +265,24 @@ cfg = {
         }
     }
 
+app = Flask(__name__)
+@app.route("/run", methods=["GET"])
 
+def run_script():
+    token = request.args.get("token")
+    if token != "JVk02BmHoCaupThoxpERbKV7VXA1sB9EgzgzA1DrRBV1OMglutDk8eraUIXQVWCe":
+        return "Unauthorized", 401
+
+    # Esegui lo script desiderato (ad esempio uno script Python o shell)
+    result = subprocess.run(["python3", "updatestocks.py"], capture_output=True, text=True)
+
+    return result.stdout or result.stderr
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
 
         # call update stocks
-update_stocks(cfg)
+#update_stocks(cfg)
 #import_products(cfg)
 '''
     elif(function == 'orders'):

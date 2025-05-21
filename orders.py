@@ -5,7 +5,6 @@ import csv
 from sh_glcloud import Sh
 import io
 from datetime import datetime
-import sib_api_v3_sdk
 
 def db_connect(mysql_cfg):
     return mysql.connector.connect(

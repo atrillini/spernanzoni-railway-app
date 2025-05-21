@@ -250,7 +250,7 @@ def update_stocks(cfg):
 cfg = {
         'stock_url': 'https://spernanzoni.com/import/batch/stock.csv',
         'products_url': 'https://spernanzoni.com/import/batch/anagrafica.csv',
-        'size_guide_url': 'spernanzoni/gergo-sizes.json',
+        'size_guide_url': 'gergo-sizes.json',
         'mysql': {
             'host': 'gondola.proxy.rlwy.net', 
             'db_user': 'root', 

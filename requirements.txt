@@ -1,0 +1,10 @@
+requests
+shopifyapi
+schedule
+pandas
+pathlib
+mysql-connector-python
+google-cloud-storage
+gspread
+oauth2client
+xmltodict

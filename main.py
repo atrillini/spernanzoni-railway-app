@@ -266,6 +266,7 @@ cfg = {
     }
 
 app = Flask(__name__)
+
 @app.route("/run", methods=["GET"])
 
 def run_script():
@@ -274,9 +275,30 @@ def run_script():
         return "Unauthorized", 401
 
     # Esegui lo script desiderato (ad esempio uno script Python o shell)
-    result = subprocess.run(["python3", "updatestocks.py"], capture_output=True, text=True)
+    process = subprocess.Popen(['python3', 'updatestocks.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
 
-    return result.stdout or result.stderr
+    print(stdout.decode())  # Va nei log Railway
+    print(stderr.decode())  # Anche gli errori
+
+    return f"<pre>{stdout.decode()}\n{stderr.decode()}</pre>"  # Vedi anche nel browser
+
+@app.route("/import", methods=["GET"])
+
+def import_script():
+    token = request.args.get("token")
+    if token != "JVk02BmHoCaupThoxpERbKV7VXA1sB9EgzgzA1DrRBV1OMglutDk8eraUIXQVWCe":
+        return "Unauthorized", 401
+
+    # Esegui lo script desiderato (ad esempio uno script Python o shell)
+    process = subprocess.Popen(['python3', 'import.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    print(stdout.decode())  # Va nei log Railway
+    print(stderr.decode())  # Anche gli errori
+
+    return f"<pre>{stdout.decode()}\n{stderr.decode()}</pre>"  # Vedi anche nel browser
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)

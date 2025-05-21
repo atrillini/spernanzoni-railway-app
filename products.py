@@ -73,7 +73,7 @@ def import_products(cfg):
     db_cursor = db_connection.cursor()
 
     for p in sh_prods:
-      
+        print('sto valutando il prodotto '+p.id)  
         if('import' in p.tags):
 
             if(get_product_db(db_cursor, 'products', p.id)): continue

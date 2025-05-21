@@ -262,3 +262,4 @@ cfg = {
             'orders_table': 'orders'
         }
     }
+update_stocks(cfg)

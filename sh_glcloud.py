@@ -2,7 +2,7 @@ import shopify
 
 # GERGO config
 API_KEY = 'f6f52cf1afb0f7a650e07802e7beb845'
-API_PASSWORD = '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'
+API_PASSWORD = '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'
 API_VERSION = '2025-01'
 SHOP_URL = 'wttgrn-i5.myshopify.com'
 LOCATION_ID = '106776428874'
